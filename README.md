@@ -1,5 +1,6 @@
-Plataforma voto electrónico educativa
-=====================================
+[![Python application](https://github.com/AntonioRodriguezRuiz/decide_practica3_2324/actions/workflows/django.yml/badge.svg?branch=main)](https://github.com/AntonioRodriguezRuiz/decide_practica3_2324/actions/workflows/django.yml)
+
+# Plataforma voto electrónico educativa
 
 El objetivo de este proyecto es implementar una plataforma de voto
 electrónico seguro, que cumpla una serie de garantías básicas, como la
@@ -10,17 +11,14 @@ votación, por lo que prima la simplicidad por encima de la eficiencia
 cuando sea posible. Por lo tanto se asumen algunas carencias para permitir
 que sea entendible y extensible.
 
-
-Subsistemas, apps y proyecto base
----------------------------------
+## Subsistemas, apps y proyecto base
 
 El proyecto se divide en [subsistemas](doc/subsistemas.md), los cuales estarán desacoplados
 entre ellos. Para conseguir esto, los subsistemas se conectarán entre si mediante API y necesitamos un proyecto base donde configurar las ruts de estas API.
 
 Este proyecto Django estará dividido en apps (subsistemas y proyecto base), donde cualquier app podrá ser reemplazada individualmente.
 
-Gateway
----------
+## Gateway
 
 Para ofrecer un punto de entrada conocido para todos los subsistemas
 existe el llamado **gateway** que no es más que una ruta disponible
@@ -47,8 +45,7 @@ gateway es útil para hacer uso desde peticiones de cliente, por ejemplo
 en el javascript de la cabina de votación o la visualización de resultados,
 y también para módulos externos que no sean aplicaciones django.
 
-Configurar y ejecutar el proyecto
----------------------------------
+## Configurar y ejecutar el proyecto
 
 Para configurar el proyecto, podremos crearnos un fichero local_settings.py basado en el
 local_settings.example.py, donde podremos configurar la ruta de nuestras apps o escoger que módulos
@@ -71,8 +68,8 @@ base de datos que utilizaremos:
 
     ./manage.py migrate
 
-Creamos el superusuario, que será el administrador del sistema. Con este usuario podremos tener acceso 
-a todas las funcionalidades ofrecidas por Decide, como por ejemplo crear usuarios. El comando es el 
+Creamos el superusuario, que será el administrador del sistema. Con este usuario podremos tener acceso
+a todas las funcionalidades ofrecidas por Decide, como por ejemplo crear usuarios. El comando es el
 siguiente:
 
     ./manage.py createsuperuser
@@ -82,8 +79,7 @@ siguiente manera:
 
     ./manage.py runserver
 
-Tests
--------------------
+## Tests
 
 Una vez configurado postgres y ejecutado el migrate.
 
@@ -101,15 +97,13 @@ Para ver la cobertura del codigo que estos tests prueban, se puede lanzar el sig
 
 Esto generará un "index.html", que se puede consultar para ver de forma especifica las partes del codigo no testeadas.
 
-
-Guía rápida
--------------------
+## Guía rápida
 
 Aclaración: En esta guía vamos a usar como url de base: "localhost:8000".
 
 ### 1. Login como administrador del sistema
 
-Una vez iniciada la aplicación, accedemos a http://localhost:8000/admin/ e ingresamos las credenciales 
+Una vez iniciada la aplicación, accedemos a http://localhost:8000/admin/ e ingresamos las credenciales
 del super usuario creado anteriormente.
 
 ![Imagen 01: Login](./resources/quickstart/00_login.png)
@@ -120,13 +114,13 @@ Si nos hemos conectado con éxito como un administrador, nos debería aparecer l
 
 ### 2. Creación de questions
 
-Buscamos el botón "add" dentro del apartado "questions" de la categoría "voting". En el textarea 
+Buscamos el botón "add" dentro del apartado "questions" de la categoría "voting". En el textarea
 etiquetado como "Desc" se añade la pregunta a realizar en la futura votación. Después en los
-apartados de "question options" añadimos todas las posibles respuestas a la pregunta definida 
+apartados de "question options" añadimos todas las posibles respuestas a la pregunta definida
 anteriormente. Estas "questions options" se pueden eliminar clickando a la "X" situada a la derecha y
-se pueden añadir mas opciones pulsando en "add questions options" situado mas abajo. 
+se pueden añadir mas opciones pulsando en "add questions options" situado mas abajo.
 
-No es necesario rellenar todas las "question options" que aparezcan en la vista. Una vez tengamos 
+No es necesario rellenar todas las "question options" que aparezcan en la vista. Una vez tengamos
 todas las posibles respuestas que deseamos podemos guardar haciendo click en el botón "Save".
 
 ![Imagen 03: Questions](./resources/quickstart/02_question.png)
@@ -137,12 +131,12 @@ Hacemos click al botón "add" dentro de "Votings" en la categoría "Voting" y no
 de creacion de votaciones.
 
 En dicho formulario le ponemos un nombre a la votación, la descripción es opcional, en el desplegable
-"question" nos debe aparecer la pregunta generada en el apartado anterior de esta guía y la 
-seleccionamos. 
+"question" nos debe aparecer la pregunta generada en el apartado anterior de esta guía y la
+seleccionamos.
 
 ![Imagen 04: Voting](./resources/quickstart/03_voting.png)
 
-En el apartado "Auths" de su primera votación deberá crear uno. Para ello, debe clickar en el "+" a la 
+En el apartado "Auths" de su primera votación deberá crear uno. Para ello, debe clickar en el "+" a la
 derecha de la lista de "Auths". Aparecerá una ventana nueva donde deberá rellenar un formulario con el
 nombre que desee y la url, en nuestro caso es "http://localhost:8000".
 
@@ -152,13 +146,13 @@ Pulsamos en el botón "Save" y ya tenemos nuestra votación creada.
 
 ### 4. Creacion de census
 
-En "votings" buscamos la votación que hemos generado y entramos en ella para mirar en la barra de 
+En "votings" buscamos la votación que hemos generado y entramos en ella para mirar en la barra de
 direcciones la id de nuestra votación. En el siguiente ejemplo, la id es 19.
 
     http://localhost:8000/admin/voting/voting/19/change/
 
-Nos dirigimos al apartado "censuss" en la categoría "census" y clickamos en "add". Ponemos la id de 
-nuestra votacion en "voting id" y en "voter id" ponemos la id del votante que queremos añadir. 
+Nos dirigimos al apartado "censuss" en la categoría "census" y clickamos en "add". Ponemos la id de
+nuestra votacion en "voting id" y en "voter id" ponemos la id del votante que queremos añadir.
 
 NOTA: el administrador si es el primer usuario creado tendrá la id 1.
 
@@ -166,10 +160,10 @@ NOTA: el administrador si es el primer usuario creado tendrá la id 1.
 
 ### 5. Comenzar la votación
 
-Llegados a este punto necesitamos abrir una votación, para ello debemos marcar el checkbox a la 
+Llegados a este punto necesitamos abrir una votación, para ello debemos marcar el checkbox a la
 izquierda de nuestra votación. Una vez seleccionado, tenemos que ir al desplegable de "action",
-seleccionamos la opción "Start" y pulsamos en el boton "Go". Esperamos a que aparezca el "Start date" 
-y ya tendríamos la votación abierta y lista para votar. 
+seleccionamos la opción "Start" y pulsamos en el boton "Go". Esperamos a que aparezca el "Start date"
+y ya tendríamos la votación abierta y lista para votar.
 
 ![Imagen 07: Start voting](./resources/quickstart/06_start.png)
 
@@ -183,17 +177,17 @@ Para poder votar primero debemos ingresar en la barra de direcciones de nuestro 
 
 Una vez accedemos, debemos iniciar sesión con un usuario que esté incluido en el censo.
 
-Cuando nos aparezca la pregunta, ya podemos seleccionar la respuesta y guardarla como un voto. 
+Cuando nos aparezca la pregunta, ya podemos seleccionar la respuesta y guardarla como un voto.
 Al confirmar el voto, nos aparecerá lo siguiente:
 
 ![Imagen 09: Vote success](./resources/quickstart/08_voted.png)
 
-El mensaje de "Congratulations. Your vote has been sent" nos confirma que nuestro voto ha sido 
+El mensaje de "Congratulations. Your vote has been sent" nos confirma que nuestro voto ha sido
 registrado correctamente.
 
 ### 7. Conteo de votos
 
-Nos dirigimos nuevamente al apartado "voting" desde nuestro perfil de administrador. Primero tenemos 
+Nos dirigimos nuevamente al apartado "voting" desde nuestro perfil de administrador. Primero tenemos
 que cerrar la votación, para ello seleccionamos el checkbox a la izquierda de nuestra votación
 marcamos "Stop" y pulsamos el botón "Go". Notará que en el apartado "End Date" ahora aparece
 la fecha actual, esto nos indica que la votación ha sido cerrada y está lista para el conteo.
@@ -212,24 +206,23 @@ resultado accediendo a la siguiente url:
 
 ![Imagen 11: Visualizer](./resources/quickstart/10_visualizer.png)
 
-Ejecutar con docker
--------------------
+## Ejecutar con docker
 
 Existe una configuración de docker compose que lanza 3 contenedores, uno
 para el servidor de base de datos, otro para el django y otro con un
 servidor web nginx para servir los ficheros estáticos y hacer de proxy al
 servidor django:
 
- * decide\_db
- * decide\_web
- * decide\_nginx
+- decide_db
+- decide_web
+- decide_nginx
 
 Además se crean dos volúmenes, uno para los ficheros estáticos y medias del
 proyecto y otro para la base de datos postgresql, de esta forma los
 contenedores se pueden destruir sin miedo a perder datos:
 
- * decide\_db
- * decide\_static
+- decide_db
+- decide_static
 
 Se puede editar el fichero docker-settings.py para modificar el settings
 del proyecto django antes de crear las imágenes del contenedor.
@@ -259,8 +252,7 @@ Lanzar una consola SQL:
 
     $ docker exec -ti decide_db ash -c "su - postgres -c 'psql postgres'"
 
-Ejecutar con vagrant + ansible
-------------------------------
+## Ejecutar con vagrant + ansible
 
 Existe una configuración de vagrant que crea una máquina virtual con todo
 lo necesario instalado y listo para funcionar. La configuración está en
@@ -295,8 +287,7 @@ Eliminar la máquina virtual:
 
     $ vagrant destroy
 
-Ansible
--------
+## Ansible
 
 El provisionamiento de la aplicación con vagrant está hecho con Ansible,
 algo que nos permite utilizarlo de forma independiente para provisionar
@@ -313,13 +304,13 @@ Los scripts de ansible están divididos en varios ficheros .yml donde
 se definen las diferentes tareas, por lo que es posible lanzar partes
 independientes:
 
-  * packages.yml, dependencias del sistema
-  * user.yml, creación de usuario decide
-  * python.yml, git clone del repositorio e instalación de dependencias python en virtualenv
-  * files.yml, ficheros de configuración, systemd, nginx y local\_settings.py
-  * database.yml, creación de usuario y base de datos postgres
-  * django.yml, comandos django básicos y creación de usuario admin
-  * services.yml, reinicio de servicios, decide, nginx y postgres
+- packages.yml, dependencias del sistema
+- user.yml, creación de usuario decide
+- python.yml, git clone del repositorio e instalación de dependencias python en virtualenv
+- files.yml, ficheros de configuración, systemd, nginx y local_settings.py
+- database.yml, creación de usuario y base de datos postgres
+- django.yml, comandos django básicos y creación de usuario admin
+- services.yml, reinicio de servicios, decide, nginx y postgres
 
 Por ejemplo este comando sólo reinicia los servicios en el servidor:
 
@@ -329,8 +320,7 @@ El provisionamiento de ansible está diseñado para funcionar con **ubuntu/bioni
 para funcionar con otras distribuciones es posible que haga falta modificar
 el fichero packages.yml.
 
-Versionado
-----------
+## Versionado
 
 El versionado de API está hecho utilizando Django Rest Framework, y la forma
 elegida para este versionado es mediante [parámetros de búsqueda](https://www.django-rest-framework.org/api-guide/versioning/#queryparameterversioning),
@@ -345,7 +335,6 @@ Si nosotros queremos que la salida que nos da la llamada a la API /voting/, sea
 diferente en la versión 2, solo tenemos que comprobar en la versión nos está
 llegando, y hacer lo que queramos, por ejemplo:
 
-
 ```
     def get(self, request, *args, **kwargs):
         version = request.version  # Con request.version obtenemos la versión
@@ -359,12 +348,10 @@ llegando, y hacer lo que queramos, por ejemplo:
 
 Para llamar a las diferentes versiones, haremos lo siguiente:
 
-* /voting/?version=v1
-* /voting/?version=v2
+- /voting/?version=v1
+- /voting/?version=v2
 
-
-Test de estrés con Locust
--------------------------
+## Test de estrés con Locust
 
 Antes de empezar, comentaré para que sirven las pruebas de estrés. A veces necesitamos soportar que
 nuestra aplicación ofrezca una cantidad de peticiones por segundo, porque habrá mucha gente entrando
@@ -381,7 +368,7 @@ Para ejecutar los test de estrés utilizando locust, necesitaremos tener instala
 Una vez instalado, necesitaremos tener un fichero locustfile.py donde tengamos la configuración de
 lo que vamos a ejecutar. En nuestro caso, tenemos hecho dos ejemplos:
 
-1. Visualizer: entra en el visualizador de una votación para ver cuantas peticiones puede aguantar.
+1.  Visualizer: entra en el visualizador de una votación para ver cuantas peticiones puede aguantar.
 
     Para ejecutar el test de Visualizer, tenemos que tener en cuenta que entra en la votación 1, por lo
     que necesitaremos tenerla creada para que funcione correctamente, una vez hecho esto, podemos
@@ -394,43 +381,41 @@ lo que vamos a ejecutar. En nuestro caso, tenemos hecho dos ejemplos:
     queremos que vaya creciendo hasta llegar a ese número. Por ejemplo, si ponemos 100 y 5, estaremos
     creando 5 nuevos usuarios cada segundo hasta llegar a 100.
 
-2. Voters: utilizaremos usuarios previamente creados, y haremos una secuencia de peticiones: login,
-getuser y store. Sería lo que realizaría un usuario cuando va a votar, por lo que con este ejemplo
-estaremos comprobando cuantas votaciones podemos hacer.
+2.  Voters: utilizaremos usuarios previamente creados, y haremos una secuencia de peticiones: login,
+    getuser y store. Sería lo que realizaría un usuario cuando va a votar, por lo que con este ejemplo
+    estaremos comprobando cuantas votaciones podemos hacer.
 
+        Para ejecutar el test de Voter, necesitaremos realizar varios preparos. Necesitaremos la votación 1
+        abierta, y necesitaremos crear una serie de usuarios en el censo de esta votación, para que cuando
+        hagamos el test, estos usuario puedan autenticarse y votar correctamente. Para facilitar esta
+        tarea, hemos creado el script de python gen_census.py, en el cual creamos los usuarios que
+        tenemos dentro del fichero voters.json y los añadimos al censo utilizando la librería requests.
+        Para que este script funcione, necesitaremos tener instalado request:
 
-    Para ejecutar el test de Voter, necesitaremos realizar varios preparos. Necesitaremos la votación 1
-    abierta, y necesitaremos crear una serie de usuarios en el censo de esta votación, para que cuando
-    hagamos el test, estos usuario puedan autenticarse y votar correctamente. Para facilitar esta
-    tarea, hemos creado el script de python gen_census.py, en el cual creamos los usuarios que
-    tenemos dentro del fichero voters.json y los añadimos al censo utilizando la librería requests.
-    Para que este script funcione, necesitaremos tener instalado request:
+            $ pip install requests
 
-        $ pip install requests
+        Una vez instalado, ejecutamos el script:
 
-    Una vez instalado, ejecutamos el script:
+            $ python gen_census.py
 
-        $ python gen_census.py
+        Tras esto, ya podremos comenzar el test de estrés de votantes:
 
-    Tras esto, ya podremos comenzar el test de estrés de votantes:
-
-        $ locust Voters
+            $ locust Voters
 
 Importante mirar bien el fichero locustfile.py, donde existen algunas configuraciones que podremos
 cambiar, dependiendo del HOST donde queramos hacer las pruebas y del id de la votación.
 
 A tener en cuenta:
 
-* En un servidor local, con un postgres que por defecto nos viene limitado a 100 usuarios
+- En un servidor local, con un postgres que por defecto nos viene limitado a 100 usuarios
   concurrentes, cuando pongamos más de 100, lo normal es que empiecen a fallar muchas peticiones.
-* Si hacemos las pruebas en local, donde tenemos activado el modo debug de Django, lo normal es que
+- Si hacemos las pruebas en local, donde tenemos activado el modo debug de Django, lo normal es que
   las peticiones tarden algo más y consigamos menos RPS (Peticiones por segundo).
 
-Poblar con datos iniciales
---------------------------
+## Poblar con datos iniciales
 
 Para probar el correcto funcionamiento de nuestra aplicación de decide, hemos generado una serie de
-datos iniciales. Para ello, hemos elaborado un archivo JSON con datos que Django usa para generar 
+datos iniciales. Para ello, hemos elaborado un archivo JSON con datos que Django usa para generar
 varias votaciones y usuarios de manera automática. Este se ha dotado con el nombre de "populate.json"
 y se ha colocado junto a "manage.py". Lo pasos a seguir son los comentados abajo.
 
@@ -444,48 +429,45 @@ Tras esto, poblamos la base de datos con datos iniciales de la siguiente manera:
 
 Se ha creado un usuario staff con las credenciales:
 
-* Usuario: admin
-* Contraseña: admin
+- Usuario: admin
+- Contraseña: admin
 
 Por otra parte, el resto de usuarios (3 restantes) siguen la siguiente secuencia:
 
-* Usuario: usuario#
-* Contraseña: practica#
+- Usuario: usuario#
+- Contraseña: practica#
 
 donde # es la sucesión desde el valor 1 hasta el 3.
 
 En cuanto a las votaciones, se ha creado una votación cerrada con su correspondiente conteo,
 una votación abierta con la que podemos interactuar y una votación que no se ha iniciado,
 cubriendo así todas las posibilidades.
-Si se quieren añadir más casuística a la carga inicial, basta con editar el "populate.json" siguiendo 
+Si se quieren añadir más casuística a la carga inicial, basta con editar el "populate.json" siguiendo
 la misma estructura que los datos contenidos en el mismo.
 
-
-Cabe añadir que previo a ejecutar ambos comandos, deberemos haber activado nuestro entorno de 
+Cabe añadir que previo a ejecutar ambos comandos, deberemos haber activado nuestro entorno de
 Python 3.9.
-
 
 El archivo "populate.json" se ha generado manualmente con ayuda de la documentación encontrada en
 [el siguiente portal web](https://docs.djangoproject.com/en/4.1/howto/initial-data/).
 
-Versiones actuales
-------------------
+## Versiones actuales
 
-En las ultimas actualizaciones se han modificado las versiones usadas por la aplicación Decide. Las 
+En las ultimas actualizaciones se han modificado las versiones usadas por la aplicación Decide. Las
 versiones usadas actualmente se corresponden a las siguientes:
 
-* Django = 4.1
-* pycryptodome = 3.15.0
-* djangorestframework = 3.14.0
-* django-cors-headers = 3.13.0
-* requests = 2.28.1
-* django-filter = 22.1
-* psycopg2 = 2.9.4
-* coverage = 6.5.0
-* jsonnet = 0.18.0
-* django-nose = 1.4.6
-* django-rest-swagger = 2.2.0
-* Python = 3.9
-* Vue=3
-* Bootstrap=5.2
-* selenium = 4.7.2
+- Django = 4.1
+- pycryptodome = 3.15.0
+- djangorestframework = 3.14.0
+- django-cors-headers = 3.13.0
+- requests = 2.28.1
+- django-filter = 22.1
+- psycopg2 = 2.9.4
+- coverage = 6.5.0
+- jsonnet = 0.18.0
+- django-nose = 1.4.6
+- django-rest-swagger = 2.2.0
+- Python = 3.9
+- Vue=3
+- Bootstrap=5.2
+- selenium = 4.7.2
