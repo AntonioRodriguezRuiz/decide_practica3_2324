@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/34f5f0fc1702454ba541dc87d7bc11d3)](https://app.codacy.com/gh/AntonioRodriguezRuiz/decide_practica3_2324?utm_source=github.com&utm_medium=referral&utm_content=AntonioRodriguezRuiz/decide_practica3_2324&utm_campaign=Badge_Grade)
 [![Python application](https://github.com/AntonioRodriguezRuiz/decide_practica3_2324/actions/workflows/django.yml/badge.svg?branch=main)](https://github.com/AntonioRodriguezRuiz/decide_practica3_2324/actions/workflows/django.yml)
 
 # Plataforma voto electrónico educativa
