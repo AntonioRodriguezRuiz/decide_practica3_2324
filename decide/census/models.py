@@ -4,7 +4,7 @@ from django.db import models
 class Census(models.Model):
     voting_id = models.PositiveIntegerField()
     voter_id = models.PositiveIntegerField()
-    adscripcion = models.CharField(max_length=256, default='none') 
+    adscripcion = models.CharField(max_length=128, default="none")
 
     class Meta:
-        unique_together = (('voting_id', 'voter_id'),)
+        unique_together = (("voting_id", "voter_id"),)
