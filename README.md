@@ -1,7 +1,5 @@
 [![Python application](https://github.com/AntonioRodriguezRuiz/decide_practica3_2324/actions/workflows/django.yml/badge.svg?branch=main)](https://github.com/AntonioRodriguezRuiz/decide_practica3_2324/actions/workflows/django.yml)
-
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d7cf38c5560e41f2aa77f28543b350e2)](https://app.codacy.com/gh/AntonioRodriguezRuiz/decide_practica3_2324/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
-
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/d7cf38c5560e41f2aa77f28543b350e2)](https://app.codacy.com/gh/AntonioRodriguezRuiz/decide_practica3_2324/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_coverage)
 
 # Plataforma voto electrónico educativa
